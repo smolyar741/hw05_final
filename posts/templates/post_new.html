@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Редактировать пост{% endblock %}
+{% block content %}
+{% load user_filters %}
+
+<div>Редактировать пост</div>
+    <form method="post" enctype="multipart/form-data" action="{% url 'post_edit' post.author.username post.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            Сохранить
+        </button>
+    </form>
+{% endblock %}
